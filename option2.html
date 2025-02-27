@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust - Your Adventure Awaits</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <!--Font Awesome-->
+    <style>
+        /* Reset and Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f8; /* Light background */
+            color: #333;            /* Dark text */
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;  /* Inherit color from parent */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        /* Container and Layout */
+        .container {
+            width: 85%;
+            max-width: 1200px; /* Maximum width for larger screens */
+            margin: 0 auto;
+            padding: 2rem 0;  /* Top and bottom padding */
+            overflow: hidden; /* clearfix for floats */
+        }
+
+
+        /* Header */
+        header {
+            background-color: #fff; /* White header */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            position: sticky; /* Sticky header */
+            top: 0;
+            z-index: 100;   /* Ensure header is on top */
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4a90e2; /* Primary color - a shade of blue */
+        }
+
+
+        .nav-links a {
+            margin-left: 1.5rem;
+            font-weight: 500;
+            position: relative;
+            display: inline-block; /* For the hover effect */
+        }
+        .nav-links a::after { /* Animated underline */
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background-color: #4a90e2;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center;    /* Center horizontally */
+            justify-content: center; /* Center vertically */
+            text-align: center;      /* Center text */
+            min-height: 70vh;  /*  height of at least the viewport */
+            background: linear-gradient(135deg, #70c1ff, #4a90e2); /* Gradient background */
+            color: #fff;            /* White text on the gradient */
+            padding: 2rem;         /*  padding */
+        }
+
+        .hero h1 {
+            font-size: 3.5rem; /* Larger heading */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease forwards; /* Fade in animation */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            animation: fadeInUp 1s ease forwards;  /* Fade in animation */
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;  /* Spacing between buttons */
+            flex-wrap: wrap; /* Wrap buttons on smaller screens */
+            justify-content: center; /* Center buttons */
+        }
+
+        .cta-button {
+            padding: 0.8rem 1.8rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-flex; /* Align icon and text */
+            align-items: center; /* Center vertically */
+            gap: 0.5rem;          /* Space between icon and text */
+            transition: transform 0.2s ease, background-color 0.3s ease; /* Smooth transitions */
+            background-color: white;
+            color: #4a90e2;
+        }
+
+        .cta-button i {
+             /* Slightly larger icon */
+            font-size: 1.2rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px); /* Slight lift on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*  shadow on hover */
+        }
+        .cta-button.ios {
+          background-color: black;
+          color: white;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: #f9f9f9;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .features h2 {
+           font-size: 2rem;
+           color: #4A90E2;
+           margin-bottom: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 15px;  /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /*  shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth transitions */
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #4a90e2;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+
+        /* Footer */
+         footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .footer-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .footer-links {
+          margin-top: 0.5rem;
+        }
+        .footer-links a {
+          margin: 0 0.5rem;
+          color: #bbb;
+          transition: color 0.3s;
+        }
+        .footer-links a:hover { color: white;}
+        .copyright { margin-top: 1rem;}
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            .header-content{
+              flex-direction: column;
+              gap: 0.5rem;
+            }
+            .nav-links a {
+              margin-left: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                width: 100%; /* Full width buttons on small screens */
+                justify-content: center;
+            }
+
+            .feature-grid {
+              grid-template-columns: 1fr; /* Stack cards vertically */
+            }
+
+        }
+
+        /* For Very Small Screens */
+        @media (max-width: 480px) {
+          .hero h1 {
+            font-size: 2rem;
+          }
+           .footer-content{
+              flex-direction: column;
+           }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Wanderlust</a>
+            <nav class="nav-links">
+                <a href="#">Features</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Swipe, plan, and explore the world with Wanderlust.  Your perfect trip is just a swipe away.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button ios" aria-label="Download on the App Store">
+                    <i class="fab fa-apple"></i> iOS
+                </a>
+                <a href="#" class="cta-button android" aria-label="Get it on Google Play">
+                    <i class="fab fa-google-play"></i> Android
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h2>Explore the Features</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <i class="fas fa-hand-sparkles"></i>
+            <h3>Tinder-Style Discovery</h3>
+            <p>Swipe through curated destinations and experiences to find your perfect match.</p>
+          </div>
+          <div class="feature-card">
+           <i class="fas fa-globe-americas"></i>
+            <h3>Multi-Country Planning</h3>
+            <p>Seamlessly plan trips across multiple countries and destinations.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-filter"></i>
+            <h3>Comprehensive Filters</h3>
+            <p>Refine your search with filters for budget, interests, and more.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-users"></i>
+            <h3>Collaborative Trips</h3>
+            <p>Plan and share trips with friends and family.</p>
+          </div>
+            <div class="feature-card">
+                <i class="fas fa-star"></i>
+                <h3>Comprehensive Ratings</h3>
+                <p>Make informed decisions with detailed reviews and ratings from fellow travelers.</p>
+            </div>
+            <div class="feature-card">
+               <i class="fas fa-search"></i>
+                <h3>Flexible Search</h3>
+                <p>Easily find what you're looking for with our powerful search engine.</p>
+            </div>
+
+
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footer-content">
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">FAQ</a>
+        </div>
+        <p class="copyright">© 2023 Wanderlust. All rights reserved.</p>
+      </div>
+    </footer>
+
+</body>
+</html>
